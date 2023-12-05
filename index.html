@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        margin: 20px auto;
+        width: 500px;
+        height: 500px;
+        background-size: 500px 500px;
+        background-image: url('./imges/1.jpg');
+    }
+
+    .button1 {}
+</style>
+
+<body>
+    <button class="button1">点我</button>
+    <div class="box"></div>
+
+    <script>
+        let index = 0;
+        let ints = [1, 2, 4, 5, 6];
+        let audio = new Audio('./圣诞专属曲.mp3');
+
+        function updateBackground() {
+            index = (index + 1) % ints.length;
+            document.querySelector('.box').style.backgroundImage = `url('./imges/${ints[index]}.jpg')`;
+            setTimeout(() => {
+                requestAnimationFrame(updateBackground);
+            }, 400)
+        }
+        document.querySelector('.button1').addEventListener('click', function () {
+            audio.play();
+            updateBackground();
+        });
+    </script>
+</body>
+
+</html>
